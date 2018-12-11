@@ -357,4 +357,72 @@ module.exports = function (app){
     });
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //metodos GET con id
+
+    app.get('/poaId/:id',(req,res)=>{
+        theModel.getSinglePoa(req.params.id,(err,data)=>{
+            if (data) {
+                res.json({
+                    success:true,
+                    data
+                })
+            }
+            else{
+                res.json(500).json({
+                    msg:"errorr"
+                })
+            }
+        });
+    });
+
+    app.get('/capturaId/:id',(req,res)=>{
+        theModel.getSingleCaptura(req.params.id,(err,data)=>{
+            if (data) {
+                res.json({
+                    success:true,
+                    data
+                })
+            }
+            else{
+                res.json(500).json({
+                    msg:"errorr"
+                })
+            }
+        });
+    });
+
+    app.get('/partidasId/:id',(req,res)=>{
+        theModel.getSinglePartidas(req.params.id,(err,data)=>{
+            if (data) {
+                res.json({
+                    success:true,
+                    data
+                })
+            }
+            else{
+                res.json(500).json({
+                    msg:"errorr"
+                })
+            }
+        });
+    });
+
+    app.get('/metasId/:id',(req,res)=>{
+        theModel.getSingleMetas(req.params.id,(err,data)=>{
+            if (data) {
+                res.json({
+                    success:true,
+                    data
+                })
+            }
+            else{
+                res.json(500).json({
+                    msg:"errorr"
+                })
+            }
+        });
+    });
+
+//////////////////////////////////////////////////////////////////////////////////////////////    
 }

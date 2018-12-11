@@ -205,9 +205,14 @@ theModel.updateCaptura = (capturaData,callback)=>{
             if (err) {
                 throw err;
             }
-            else{
+            else if(result.affectedRows >= 1){
                 callback(null,{
                     "msg":"success"
+                });
+            }
+            else {
+                callback(null,{
+                    "msg":"failure"
                 });
             }
         })
@@ -226,9 +231,14 @@ theModel.updateMetas = (metasData,callback)=>{
             if (err) {
                 throw err;
             }
-            else{
+            else if(result.affectedRows >= 1){
                 callback(null,{
                     "msg":"success"
+                });
+            }
+            else {
+                callback(null,{
+                    "msg":"failure"
                 });
             }
         })
@@ -248,9 +258,14 @@ theModel.updatePartidas = (partidasData,callback)=>{
             if (err) {
                 throw err;
             }
-            else{
+            else if(result.affectedRows >= 1){
                 callback(null,{
                     "msg":"success"
+                });
+            }
+            else {
+                callback(null,{
+                    "msg":"failure"
                 });
             }
         })
@@ -269,9 +284,14 @@ theModel.updatePoa = (poaData,callback)=>{
             if (err) {
                 throw err;
             }
-            else{
+            else if(result.affectedRows >= 1){
                 callback(null,{
                     "msg":"success"
+                });
+            }
+            else {
+                callback(null,{
+                    "msg":"failure"
                 });
             }
         })
@@ -289,9 +309,14 @@ theModel.updateUsr = (usrData,callback)=>{
             if (err) {
                 throw err;
             }
-            else{
+            else if(result.affectedRows >= 1){
                 callback(null,{
                     "msg":"success"
+                });
+            }
+            else {
+                callback(null,{
+                    "msg":"failure"
                 });
             }
         })
@@ -436,6 +461,86 @@ theModel.deleteUsr = (id,callback)=>{
             else{
                 callback(null,{
                     msg:"not exist!!!"
+                })
+            }
+        });
+    }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//metodos GET con id
+
+theModel.getSinglePoa = (id,callback)=>{
+    if (conection) {
+        let  sql = `
+        SELECT * FROM poa WHERE partida = ${conection.escape(id)}`;
+
+        conection.query(sql,(err,row)=>{
+            if (err) {
+                throw err;
+            }
+            else{
+                callback(null,{
+                    msg:"todo bien",
+                    row
+                })
+            }
+        });
+    }
+};
+
+theModel.getSingleCaptura = (id,callback)=>{
+    if (conection) {
+        let  sql = `
+        SELECT * FROM captura WHERE folio = ${conection.escape(id)}`;
+
+        conection.query(sql,(err,row)=>{
+            if (err) {
+                throw err;
+            }
+            else{
+                callback(null,{
+                    msg:"todo bien",
+                    row
+                })
+            }
+        });
+    }
+};
+
+theModel.getSinglePartidas = (id,callback)=>{
+    if (conection) {
+        let  sql = `
+        SELECT * FROM partidas WHERE numero_partida = ${conection.escape(id)}`;
+
+        conection.query(sql,(err,row)=>{
+            if (err) {
+                throw err;
+            }
+            else{
+                callback(null,{
+                    msg:"todo bien",
+                    row
+                })
+            }
+        });
+    }
+};
+
+theModel.getSingleMetas = (id,callback)=>{
+    if (conection) {
+        let  sql = `
+        SELECT * FROM metas WHERE numero_meta = ${conection.escape(id)}`;
+
+        conection.query(sql,(err,row)=>{
+            if (err) {
+                throw err;
+            }
+            else{
+                callback(null,{
+                    msg:"todo bien",
+                    row
                 })
             }
         });
